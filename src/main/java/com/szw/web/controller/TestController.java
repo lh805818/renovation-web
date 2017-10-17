@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by Administrator on 2017/7/12.
  */
@@ -35,5 +38,13 @@ public class TestController {
         mv.addObject("title","的撒是打发");
         mv.setViewName("index");
         return mv;
+    }
+
+    public static void main(String[] args) {
+        Calendar nowTime = Calendar.getInstance();
+        nowTime.add(Calendar.MINUTE, 2);
+        System.out.println(2*60*1000);
+        System.out.println(nowTime.getTime().getTime()-new Date().getTime());
+
     }
 }
