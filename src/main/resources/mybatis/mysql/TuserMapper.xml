@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szw.web.dao.TuserMapper">
+  <resultMap id="BaseResultMap" type="com.szw.web.model.Tuser">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="login_status" jdbcType="VARCHAR" property="loginStatus" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="business_license" jdbcType="VARCHAR" property="businessLicense" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="other_qualifications" jdbcType="VARCHAR" property="otherQualifications" />
+    <result column="employees_number" jdbcType="INTEGER" property="employeesNumber" />
+    <result column="company_area" jdbcType="INTEGER" property="companyArea" />
+    <result column="demand_orders" jdbcType="INTEGER" property="demandOrders" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, password, mobile, login_status, openid, nickname, company, business_license, 
+    id_number, other_qualifications, employees_number, company_area, demand_orders, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.szw.web.model.Tuser">
+    insert into t_user (id, user_id, password, 
+      mobile, login_status, openid, 
+      nickname, company, business_license, 
+      id_number, other_qualifications, employees_number, 
+      company_area, demand_orders, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{loginStatus,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR}, 
+      #{idNumber,jdbcType=VARCHAR}, #{otherQualifications,jdbcType=VARCHAR}, #{employeesNumber,jdbcType=INTEGER}, 
+      #{companyArea,jdbcType=INTEGER}, #{demandOrders,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.szw.web.model.Tuser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="loginStatus != null">
+        login_status,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="businessLicense != null">
+        business_license,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="otherQualifications != null">
+        other_qualifications,
+      </if>
+      <if test="employeesNumber != null">
+        employees_number,
+      </if>
+      <if test="companyArea != null">
+        company_area,
+      </if>
+      <if test="demandOrders != null">
+        demand_orders,
+      </if>
+
+        create_time,
+
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        #{loginStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="otherQualifications != null">
+        #{otherQualifications,jdbcType=VARCHAR},
+      </if>
+      <if test="employeesNumber != null">
+        #{employeesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="companyArea != null">
+        #{companyArea,jdbcType=INTEGER},
+      </if>
+      <if test="demandOrders != null">
+        #{demandOrders,jdbcType=INTEGER},
+      </if>
+
+        now(),
+
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.szw.web.model.Tuser">
+    update t_user
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        login_status = #{loginStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="otherQualifications != null">
+        other_qualifications = #{otherQualifications,jdbcType=VARCHAR},
+      </if>
+      <if test="employeesNumber != null">
+        employees_number = #{employeesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="companyArea != null">
+        company_area = #{companyArea,jdbcType=INTEGER},
+      </if>
+      <if test="demandOrders != null">
+        demand_orders = #{demandOrders,jdbcType=INTEGER},
+      </if>
+        update_time = now(),
+
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.szw.web.model.Tuser">
+    update t_user
+    set user_id = #{userId,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      login_status = #{loginStatus,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      other_qualifications = #{otherQualifications,jdbcType=VARCHAR},
+      employees_number = #{employeesNumber,jdbcType=INTEGER},
+      company_area = #{companyArea,jdbcType=INTEGER},
+      demand_orders = #{demandOrders,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByMobile" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByOpenId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where openid = #{openId,jdbcType=VARCHAR}
+  </select>
+
+  <update id="updateByMobile" parameterType="com.szw.web.model.Tuser">
+    update t_user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="expiresin != null">
+        expiresIn = #{expiresin,jdbcType=BIGINT},
+      </if>
+
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="otherQualifications != null">
+        other_qualifications = #{otherQualifications,jdbcType=VARCHAR},
+      </if>
+      <if test="employeesNumber != null">
+        employees_number = #{employeesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="companyArea != null">
+        company_area = #{companyArea,jdbcType=INTEGER},
+      </if>
+      <if test="demandOrders != null">
+        demand_orders = #{demandOrders,jdbcType=INTEGER},
+      </if>
+      update_time = now(),
+    </set>
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </update>
+</mapper>
